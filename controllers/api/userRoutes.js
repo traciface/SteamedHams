@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
+const { User, Post, Comment, Games } = require("../../models");
 
 
 //C- Create- Checks user into the website
@@ -88,24 +88,25 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: [
+    include: 
+    [
       {
-        model: Post,
-        attributes: ["id", "title", "content", "date_created"],
+        model: Games,
+        attributes: ["id", "appID", "playtime_forever"],
       },
-      //  Comment model here:
-      {
-        model: Comment,
-        attributes: ["id", "commentContent", "date_created"],
-        include: {
-          model: Post,
-          attributes: ["title"],
-        },
-      },
-      {
-        model: Post,
-        attributes: ["title"],
-      },
+    //   //  Comment model here:
+    //   {
+    //     model: Comment,
+    //     attributes: ["id", "commentContent", "date_created"],
+    //     include: {
+    //       model: Post,
+    //       attributes: ["title"],
+    //     },
+    //   },
+    //   {
+    //     model: Post,
+    //     attributes: ["title"],
+    //   },
     ],
   })
     .then((userInfo) => {
