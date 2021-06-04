@@ -16,9 +16,13 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    steamID: {
+       type: DataTypes.STRING,
+       allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
