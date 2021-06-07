@@ -1,12 +1,24 @@
-<div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Played by {{user.name}} on {{format_date}}</p>
-  <p>
-    <span class="time-spent">{{format_date time_played}}</span>
-    time total
-  </p>
-</div>
+<section id="games" class="container">
+  <h1>All My Games</h1>
 
-<script src="./js/games.js"></script>
+  {{#each games}}
+    <div class="game">
+      <h3>{{title}}</h3>
+      <p>{{description}}</p>
+      <ul>
+        <li>Hours Played: {{duration}}</li>
+        <li><a data-id={{game.id}} class="btn btn-danger">DELETE</a></li>
+      </ul>
+      <div class="image">
+        {{image}}
+      </div>
+    </div>
+  {{else}}
+    <p>No games available</p>
+  {{/each}}
+
+</section>
+
+
+
+<script src="./js/homepage.js"></script>
