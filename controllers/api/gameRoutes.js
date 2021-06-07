@@ -6,7 +6,7 @@ const sequelize = require("../../config/connection");
 router.post("/", (req, res) => {
     Post.create({
       appID: req.body.appID,
-      playtime_forever: req.body.playtime_forever,
+      playtime: req.body.playtime_forever,
       user_id: req.session.user_id,
         })
         .then((postContent) => res.json(postContent))
