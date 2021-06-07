@@ -1,10 +1,20 @@
 {
+  "name": "steamedhams",
+  "version": "1.0.0",
+  "description": "steam randomizer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
-    "hbs": "^4.1.2",
-    "node.js": "*",
-    "nodemon": "^2.0.7"
+    "express-session": "^1.17.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
   }
 }
