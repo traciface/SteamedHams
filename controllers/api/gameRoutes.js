@@ -45,20 +45,16 @@ router.get("/", (req, res) => {
         });
 });
 // D- delete a post
-Games.deleteAll = (req, res) => {
-    Tutorial.destroy({
-      where: {},
-      truncate: false
-    })
-      .then(nums => {
-        res.send({ message: `${nums} Tutorials were deleted successfully!` });
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while removing all tutorials."
-        });
-      });
-  };
+router.delete("/del", (req, res) => {
+  Games.destroy({
+    where: {
+    }
+  }).then(function(result) {
+    res.json({
+      status: 1,
+      data: result
+    });
+  })
+});
 
 module.exports = router;
