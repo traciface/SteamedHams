@@ -2,20 +2,20 @@ const router = require("express").Router();
 const {Games, User} = require("../../models");
 const sequelize = require("../../config/connection");
 
-// C- Create a post
-router.post("/", (req, res) => {
-    Post.create({
-            title: req.body.title,
-            content: req.body.content,
-            user_id: req.session.user_id,
-        })
-        .then((postContent) => res.json(postContent))
-        .catch((err) => {
-            console.log(err);
-            res.status(500)
-                .json(err);
-        });
-});
+// C- populate the database with list of games
+// router.post("/", (req, res) => {
+//     Post.create({
+//             title: req.body.title,
+//             content: req.body.content,
+//             user_id: req.session.user_id,
+//         })
+//         .then((postContent) => res.json(postContent))
+//         .catch((err) => {
+//             console.log(err);
+//             res.status(500)
+//                 .json(err);
+//         });
+// });
 
 // R- Read- get a single game
 router.get("/:id", (req, res) => {
@@ -45,12 +45,20 @@ router.get("/", (req, res) => {
         });
 });
 // D- delete a post
-router.delete("/:id", (req, res) => {
-    Games.findAll({
-            where: {
-                id: req.params.id
-            },
-        })
-});
+Games.deleteAll = (req, res) => {
+    Tutorial.destroy({
+      where: {},
+      truncate: false
+    })
+      .then(nums => {
+        res.send({ message: `${nums} Tutorials were deleted successfully!` });
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while removing all tutorials."
+        });
+      });
+  };
 
 module.exports = router;
