@@ -1,4 +1,3 @@
-// setting global const
 
 const key = "2327B478B5D9F8850851CFF93D22102A"
 const steamCall = "http://steamcommunity.com/profiles/<id>/"
@@ -21,7 +20,7 @@ function formSearch(event) {
         fetch(steamUrl)
             .then(function (response) {
                 if (response.ok) {
-                    response.json() then(function (data) {
+                    response.json() .then(function (data) {
                         getResults(data, searchInputValue, selectBoxValue);
                     })
 
