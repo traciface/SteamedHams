@@ -21,13 +21,17 @@ router.get("/games", (req, res) => {
   if (req.session.loggedIn) {
   console.log(req.session);
   Games.findAll({
-    attributes: ["id", "appID", "title", "playtime_forever" ],
-    
-   
+    where: {
+      user_id: req.session.user_id
+    },
+    attributes: ["id", "appID", "title", "playtime_forever" ]
   })
+
   // serialises the posts and then passes them into the template
     .then((gamesContent) => {
+      console.log(gamesContent);
       const games = gamesContent.map((game) => game.get({ plain: true }));
+      console.log(games)
       res.render("games", { games, logged_in: req.session.loggedIn });
     })
     .catch((err) => {
@@ -47,8 +51,10 @@ router.get("/game", (req, res) => {
 
   Games.findOne({
     attributes: ["id", "appID", "title", "playtime_forever" ],
-    order: sequelize.literal('rand()')
-   
+    order: sequelize.literal('rand()'),
+    where: {
+      user_id: req.session.user_id
+    }
   })
   // serialises the posts and then passes them into the template
     .then((randGame) => {

@@ -25,7 +25,7 @@ async function importGames(event)
         }); 
 
     // await fetch("/games.json")
-    var steamUrl = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=2327B478B5D9F8850851CFF93D22102A&steamid=" + steamID + "&format=json&include_appinfo=true";
+    var steamUrl = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=2327B478B5D9F8850851CFF93D22102A&steamid=" + steamID + "&format=json&include_appinfo=true";
     var fetching = await fetch(steamUrl)
     .then(response => {
     return response.json();

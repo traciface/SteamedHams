@@ -36,7 +36,9 @@ router.get("/", (req, res) => {
     Games.findAll({
       attributes: ["id", "appID", "title", "playtime_forever" ],
       order: [["playtime_forever", "DESC"]],
-           
+      where: {
+        user_id: req.session.user_id
+      }     
         })
         .then((postContent) => res.json(postContent.reverse()))
         .catch((err) => {
