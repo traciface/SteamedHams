@@ -101,11 +101,14 @@ header.inner {
   border: 1px solid var(--primary-hover-color);
 }
 
+.image {
+    background: url('https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1947&q=80-1511512578047-dfb367046420?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80') no-repeat fixed;
+  background-size: cover
+}
+
 /* Home Search */
-.search-wrap {
-  background: url('../img/showcase.jpg') no-repeat center center fixed;
-  background-size: cover;
-  height: 100vh;
+.search-wrap, .image {
+  height: 100%;
   width: 100%;
   padding: 1.3rem 3rem;
   display: flex;
@@ -164,7 +167,8 @@ input[type='search'] {
 /* Games */
 .hdbs {
   background: var(--bg-color);
-  border-bottom: 4px solid var(--primary-color);
+  border: 4px solid var(--primary-color);
+  border-radius: 8px;
   color: #fff;
   padding: 1rem;
   margin: auto;
