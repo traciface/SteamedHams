@@ -17,6 +17,8 @@ router.get('/', async (req, res) => {
 });
 
 router.get("/games", (req, res) => {
+  //console.log(req.session.loggedIn)
+  if (req.session.loggedIn) {
   console.log(req.session);
   Games.findAll({
     attributes: ["id", "appID", "title", "playtime_forever" ],
@@ -32,11 +34,15 @@ router.get("/games", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+  }
+  else {
+    res.redirect("/login")
+  }
 });
 
 router.get("/game", (req, res) => {
- 
-  
+ // console.log(req.session.loggedIn)
+ if (req.session.loggedIn) {
     // single random encounter
 
   Games.findOne({
@@ -55,6 +61,10 @@ router.get("/game", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+  }
+  else {
+    res.redirect("/login")
+  }
 });
 
 

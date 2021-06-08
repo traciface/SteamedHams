@@ -3,6 +3,7 @@ async function logout() {
     method: "post",
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "no-cors"
     },
   });
   if (response.ok) {

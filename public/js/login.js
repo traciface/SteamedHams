@@ -17,7 +17,8 @@ async function loginForm(event) {
                password
            }),
            headers: {
-               "Content-Type": "application/json"
+               "Content-Type": "application/json",
+               "Access-Control-Allow-Origin": "no-cors"
            },
        });
        console.log(response)

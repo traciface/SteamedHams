@@ -49,10 +49,12 @@ router.get("/", (req, res) => {
 router.delete("/del", (req, res) => {
   Games.destroy({
     where: {
+      user_id: req.session.user_id
     }
   }).then(function(result) {
     res.json({
       status: 1,
+      steamID: req.session.steamID,
       data: result
     });
   })

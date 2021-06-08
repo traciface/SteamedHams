@@ -22,7 +22,7 @@ console.log("signup")
               steamID
           }),
           headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
           },
       });
       if (response.ok) {
