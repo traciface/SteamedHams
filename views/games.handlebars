@@ -1,4 +1,4 @@
-<section id="games" class="container">
+<section id="games" class="container search-container">
   <h1>All My Games</h1>
 
   {{#each games}}
@@ -6,7 +6,7 @@
       <h3>{{title}}</h3>
       <p>{{description}}</p>
       <ul>
-        <li>Hours Played: {{duration}}</li>
+        <li>Hours Played: {{playtime_forever}}</li>
         <li><a data-id={{game.id}} class="btn btn-danger">DELETE</a></li>
       </ul>
       <div class="image">
@@ -18,7 +18,3 @@
   {{/each}}
 
 </section>
-
-
-
-<script src="./js/homepage.js"></script>
