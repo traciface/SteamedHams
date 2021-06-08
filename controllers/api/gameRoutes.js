@@ -4,7 +4,7 @@ const sequelize = require("../../config/connection");
 
 // C- populate the database with list of games
 router.post("/", (req, res) => {
-    Post.create({
+    Games.create({
       appID: req.body.appID,
       playtime: req.body.playtime_forever,
       user_id: req.session.user_id,
@@ -32,7 +32,7 @@ router.get("/:id", (req, res) => {
 // R- Read- get all games
 router.get("/", (req, res) => {
     console.log("======================");
-    Post.findAll({
+    Games.findAll({
             attributes: ["id", "appID", "playtime_forever"],
             order: [["playtime_forever", "DESC"]],
            
