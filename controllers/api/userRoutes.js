@@ -8,7 +8,7 @@ router.post("/", (req, res) => {
     User.create({
       username: req.body.username,
       password: req.body.password,
-      steamID: req.body.username,
+      steamID: req.body.steamID,
       email: req.body.email
     })
       // stores user data
@@ -16,7 +16,7 @@ router.post("/", (req, res) => {
         req.session.save(() => {
           req.session.user_id = userInfo.id;
           req.session.username = userInfo.username;
-          req.session.steamId = userInfo.steamID;
+          req.session.steamID = userInfo.steamID;
           req.session.loggedIn = true;
   
           res.json(userInfo);
@@ -53,6 +53,7 @@ router.post("/login", (req, res) => {
           req.session.user_id = userInfo.id;
           req.session.username = userInfo.username;
           req.session.loggedIn = true;
+          req.session.steamID = userInfo.steamID;
           console.log("login complete!!!!!!!!!!!!!!!!!!!!!")
           res.json({ user: userInfo, message: "Login complete! Welcome!" });
         });
