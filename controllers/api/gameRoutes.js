@@ -4,17 +4,17 @@ const sequelize = require("../../config/connection");
 
 // C- populate the database with list of games
 router.post("/", (req, res) => {
-    Games.create({
-      appID: req.body.appID,
-      playtime: req.body.playtime_forever,
-      user_id: req.session.user_id,
-        })
-        .then((postContent) => res.json(postContent))
-        .catch((err) => {
-            console.log(err);
-            res.status(500)
-                .json(err);
-        });
+  Games.create({
+    appID: req.body.appID,
+    playtime_forever: req.body.playtime,
+    user_id: req.session.user_id
+      })
+      .then((postContent) => res.json(postContent))
+      .catch((err) => {
+          console.log(err);
+          res.status(500)
+              .json(err);
+      });
 });
 
 // R- Read- get a single game

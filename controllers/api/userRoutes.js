@@ -1,72 +1,77 @@
 const router = require("express").Router();
 const { User, Post, Comment, Games } = require("../../models");
 
+
 //C- Create- Checks user into the website
 router.post("/", (req, res) => {
-  User.create({
-    username: req.body.username,
-    password: req.body.password,
-  })
-    // stores user data
-    .then((userInfo) => {
-      req.session.save(() => {
-        req.session.user_id = userInfo.id;
-        req.session.username = userInfo.username;
-        req.session.loggedIn = true;
-
-        res.json(userInfo);
-      });
+  console.log("singup api route")
+    User.create({
+      username: req.body.username,
+      password: req.body.password,
+      steamID: req.body.username,
+      email: req.body.email
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
+      // stores user data
+      .then((userInfo) => {
+        req.session.save(() => {
+          req.session.user_id = userInfo.id;
+          req.session.username = userInfo.username;
+          req.session.steamId = userInfo.steamID;
+          req.session.loggedIn = true;
+  
+          res.json(userInfo);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+  
 //C- Verifies and checks for user in system
 router.post("/login", (req, res) => {
-  console.log("logged in");
-  console.log(req.session);
-  User.findOne({
-    where: {
-      username: req.body.username,
-    },
-  })
-    .then((userInfo) => {
-      if (!userInfo) {
-        res.status(400).json({ message: "Username doesn't exist!" });
-        return;
-      }
-      // verify user
-      const validPassword = userInfo.checkPassword(req.body.password);
-
-      if (!validPassword) {
-        res.status(400).json({ message: "Incorrect password!" });
-        return;
-      }
-      req.session.save(() => {
-        req.session.user_id = userInfo.id;
-        req.session.username = userInfo.username;
-        req.session.loggedIn = true;
-
-        res.json({ user: userInfo, message: "Login complete! Welcome!" });
-      });
+    console.log("logged in")
+    console.log(req.session)
+    User.findOne({
+      where: {
+        username: req.body.username,
+      },
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+      .then((userInfo) => {
+        if (!userInfo) {
+          res.status(400).json({ message: "Username doesn't exist!" });
+          return;
+        }
+        // verify user
+        const validPassword = userInfo.checkPassword(req.body.password);
+  
+        if (!validPassword) {
+          res.status(400).json({ message: "Incorrect password!" });
+          return;
+        }
+        req.session.save(() => {
+          req.session.user_id = userInfo.id;
+          req.session.username = userInfo.username;
+          req.session.loggedIn = true;
+          console.log("login complete!!!!!!!!!!!!!!!!!!!!!")
+          res.json({ user: userInfo, message: "Login complete! Welcome!" });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
-router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
-});
+  router.post("/logout", (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
 
 // R- gets the API users
 router.get("/", (req, res) => {
@@ -87,24 +92,25 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: [
+    include: 
+    [
       {
         model: Games,
         attributes: ["id", "appID", "playtime_forever"],
       },
-      //   //  Comment model here:
-      //   {
-      //     model: Comment,
-      //     attributes: ["id", "commentContent", "date_created"],
-      //     include: {
-      //       model: Post,
-      //       attributes: ["title"],
-      //     },
-      //   },
-      //   {
-      //     model: Post,
-      //     attributes: ["title"],
-      //   },
+    //   //  Comment model here:
+    //   {
+    //     model: Comment,
+    //     attributes: ["id", "commentContent", "date_created"],
+    //     include: {
+    //       model: Post,
+    //       attributes: ["title"],
+    //     },
+    //   },
+    //   {
+    //     model: Post,
+    //     attributes: ["title"],
+    //   },
     ],
   })
     .then((userInfo) => {

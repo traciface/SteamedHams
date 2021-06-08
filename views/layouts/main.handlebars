@@ -37,8 +37,12 @@
             <li>
               <a href="/games">All Games</a>
             </li>
+            <li>  
+              <button class="btn btn-primary" type="importGames" id="importGames">Import Games</button>
+            </li>
           </ul>
         {{else}}
+        
           <a href="/login">login</a>
         {{/if}}
       </nav>
@@ -50,6 +54,8 @@
 
         {{#if logged_in}}
       <script src="/js/logout.js"></script>
+      <script src="/js/importGames.js"></script>
+      <script src="/js/randomGame.js"></script>
     {{/if}}
   </body>
 
