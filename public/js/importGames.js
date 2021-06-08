@@ -24,11 +24,13 @@ async function importGames(event)
     .then(data => {
         data.games.forEach(game => {
             const appID = game.appid;
+            const title = game.name;
             const playtime = game.playtime_forever;
             const response = fetch(`/api/games`, {
                 method: "POST",
                 body: JSON.stringify({
                     appID,
+                    title,
                     playtime
 
                     
@@ -43,9 +45,3 @@ async function importGames(event)
 
 document.getElementById("importGames")
     .addEventListener("click", importGames);
-
-
-
-
-
-

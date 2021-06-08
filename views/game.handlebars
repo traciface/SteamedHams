@@ -1,20 +1,22 @@
-<section id="game" class="game container">
-  <h1>{{game.appID}}</h1>
+<section id="game" class="container">
+  
 
-
+    {{#if game.appID}}
+    <h1>{{game.title}}</h1>
     <div class="game">
-      <h3>Hours Played: {{game.playtime_forever}}</h3>
-      {{!-- <p>{{game.description}}</p>
+      
+      <p>AppID: {{game.appID}}</p>
       <ul>
         <li>Hours Played: {{game.playtime_forever}}</li>
         <li><a data-id={{game.id}} class="btn btn-danger">DELETE</a></li>
       </ul>
-      <div class="image">
+      {{!-- <div class="image">
         {{image}}
       </div>
-    </div>
+    </div> --}}
+   
   {{else}}
     <p>No games available</p>
-  {{/each}} --}}
+   {{/if}}
 
 </section>

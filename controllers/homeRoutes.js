@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 router.get("/games", (req, res) => {
   console.log(req.session);
   Games.findAll({
-    attributes: ["id", "appID", "playtime_forever" ],
+    attributes: ["id", "appID", "title", "playtime_forever" ],
     
    
   })
@@ -40,7 +40,7 @@ router.get("/game", (req, res) => {
     // single random encounter
 
   Games.findOne({
-    attributes: ["id", "appID", "playtime_forever" ],
+    attributes: ["id", "appID", "title", "playtime_forever" ],
     order: sequelize.literal('rand()')
    
   })
@@ -66,6 +66,15 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
 });
 
 module.exports = router;

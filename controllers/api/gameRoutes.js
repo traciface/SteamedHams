@@ -6,6 +6,7 @@ const sequelize = require("../../config/connection");
 router.post("/", (req, res) => {
   Games.create({
     appID: req.body.appID,
+    title: req.body.title,
     playtime_forever: req.body.playtime,
     user_id: req.session.user_id
       })
@@ -23,7 +24,7 @@ router.get("/:id", (req, res) => {
             where: {
                 id: req.params.id,
             },
-            attributes: ["id", "appID", "playtime_forever" ],
+            attributes: ["id", "appID", "title", "playtime_forever" ],
            
         })
        
@@ -33,8 +34,8 @@ router.get("/:id", (req, res) => {
 router.get("/", (req, res) => {
     console.log("======================");
     Games.findAll({
-            attributes: ["id", "appID", "playtime_forever"],
-            order: [["playtime_forever", "DESC"]],
+      attributes: ["id", "appID", "title", "playtime_forever" ],
+      order: [["playtime_forever", "DESC"]],
            
         })
         .then((postContent) => res.json(postContent.reverse()))

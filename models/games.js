@@ -15,6 +15,10 @@ Games.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    title:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     playtime_forever: {
       type: DataTypes.FLOAT,
       allowNull: true,
