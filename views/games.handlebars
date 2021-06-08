@@ -2,14 +2,14 @@
   <h1>All My Games</h1>
 
   {{#each games as |game|}}
-    <div class="hdbs">
+    
       <h3>{{game.title}}</h3>
       <p>appID: {{game.appID}}</p>
       <ul>
         <li>Hours Played: {{game.playtime_forever}}</li>
         <li><a data-id={{game.id}} class="btn btn-reverse">DELETE</a></li>
       </ul>
-    </div>
+      
   {{else}}
     <p>No games available</p>
   {{/each}}
