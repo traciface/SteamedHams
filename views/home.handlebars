@@ -1,13 +1,16 @@
-
 <section id="search" class="search-wrap">
-    <h1>Find A Game You Have Played!</h1>
-    <form action="/games/search" class="search-form">
-      <i class="fas fa-search"></i>
-      <input type="search" name="term" placeholder="Search Steam...">
+  <h1>Find A Game You Have Played!</h1>
+  <form action="/games/search" class="search-form">
+    <i class="fas fa-search"></i>
+    <input type="search" name="term" placeholder="Search Steam..." />
 
-      <input type="submit" value="Search">
+    <input type="submit" value="Search" />
 
-    </form>
-    <a href="/game">Random Game</a>
-    {{!-- <button class="btn btn-primary" type="random-game" id="random-game">Random Game</button> --}}
-  </section>
+  </form>
+
+  <li>
+    <a class="btn btn-reverse" href="/game" role="button">Random Games</a>
+  </li>
+
+  {{! <button class="btn btn-primary" type="random-game" id="random-game">Random Game</button> }}
+</section>

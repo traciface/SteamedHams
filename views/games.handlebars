@@ -1,4 +1,4 @@
-<section id="games" class="container">
+<section id="games" class="game container">
   <h1>All My Games</h1>
 
   {{#each games as |game|}}
@@ -7,7 +7,7 @@
       <p>{{game.description}}</p>
       <ul>
         <li>Hours Played: {{game.playtime_forever}}</li>
-        <li><a data-id={{game.id}} class="btn btn-danger">DELETE</a></li>
+        <li><a data-id={{game.id}} class="btn btn-reverse">DELETE</a></li>
       </ul>
       <div class="image">
         {{image}}
