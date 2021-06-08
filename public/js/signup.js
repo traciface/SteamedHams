@@ -1,6 +1,7 @@
 async function signupFormHandler(event) {
   event.preventDefault();
 
+
   console.log("Signup Started")
   const username = document.querySelector("#name-signup")
       .value.trim();
@@ -28,8 +29,10 @@ console.log("signup")
       else {
           alert(response.statusText);
       }
+
   }
 }
 
-document.querySelector("#signup-form")
+document
+  .querySelector("#signup-form")
   .addEventListener("submit", signupFormHandler);
