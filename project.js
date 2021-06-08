@@ -1,4 +1,3 @@
-
 const key = "2327B478B5D9F8850851CFF93D22102A"
 const steamCall = "http://steamcommunity.com/profiles/<id>/"
 var formControl = $(".form-control");
