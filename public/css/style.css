@@ -161,7 +161,7 @@ input[type='search'] {
 }
 
 /* Games */
-.games {
+.game {
   background: var(--bg-color);
   border-bottom: 4px solid var(--primary-color);
   color: #fff;
