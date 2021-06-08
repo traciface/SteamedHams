@@ -5,8 +5,8 @@
 :root {
   --primary-color: #261a5c;
   --primary-hover-color: #3a4da1;
-  --bg-color: #333;
-  --box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.7);
+  --bg-color: rgb(51, 51, 51);
+  --box-shadow: 3px 4px 12px rgba(10, 10, 10, 0.7);
 }
 
 * {
@@ -17,7 +17,7 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0;
   color: #333;
-  background: #a49dbd;
+  background: #42225f;
 }
 
 ul {
@@ -80,8 +80,9 @@ header.inner {
 .btn {
   color: #fff;
   padding: 0.6rem;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   transition: all 0.7s;
+  margin: 2px;
 }
 
 .btn:hover {
@@ -161,26 +162,28 @@ input[type='search'] {
 }
 
 /* Games */
-.game {
+.hdbs {
   background: var(--bg-color);
   border-bottom: 4px solid var(--primary-color);
   color: #fff;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin: auto;
   box-shadow: var(--box-shadow);
+  text-align: center;
+  width: 400px;
 }
 
-.game ul {
+.hdbs ul {
   list-style: none;
   display: flex;
 }
 
-.game li {
+.hdbs li {
   margin-right: 0.5rem;
   padding: 0.6rem;
 }
 
-.game .image {
+.hdbs .image {
   color: var(--primary-color);
 }
 
