@@ -48,13 +48,14 @@
           </ul>
         {{else}}
 
-          <a href="/login">login</a>
+          <a class="btn btn-reverse" href="/login" role="button" id="login">Login</a>
         {{/if}}
       </nav>
     </header>
-
+    <div class="image">
     <div class="container">
       {{{body}}}
+    </div>
     </div>
 
     {{#if logged_in}}
